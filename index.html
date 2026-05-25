@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizTrack Enterprise Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>BizTrack</h2>
+            <nav>
+                <a href="#" class="nav-link active" data-target="view-overview">Overview</a>
+                <a href="#" class="nav-link" data-target="view-products">Products</a>
+                <a href="#" class="nav-link" data-target="view-orders">Orders</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="view-overview" class="dashboard-view">
+                <header class="main-header">
+                    <h1>Overview Dashboard</h1>
+                    <select id="timeframe-filter">
+                        <option value="7days">Last 7 Days</option>
+                        <option value="30days">Last 30 Days</option>
+                    </select>
+                </header>
+                <section class="kpi-grid">
+                    <div class="card">
+                        <h3>Total Revenue</h3>
+                        <p id="kpi-revenue">$0.00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Orders</h3>
+                        <p id="kpi-orders">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>New Customers</h3>
+                        <p id="kpi-users">0</p>
+                    </div>
+                </section>
+                <section class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </section>
+            </section>
+
+            <section id="view-products" class="dashboard-view hidden">
+                <header class="main-header">
+                    <h1>Product Management</h1>
+                    <button class="btn btn-primary" id="btn-add-product">+ Add Product</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="view-orders" class="dashboard-view hidden">
+                <header class="main-header">
+                    <h1>Order Registry</h1>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items Ordered</th>
+                                <th>Total Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="product-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modal-title">Add New Product</h2>
+            <form id="product-form">
+                <input type="hidden" id="form-product-id">
+                <div class="form-group">
+                    <label for="form-product-name">Product Name</label>
+                    <input type="text" id="form-product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="form-product-category">Category</label>
+                    <input type="text" id="form-product-category" required>
+                </div>
+                <div class="form-group">
+                    <label for="form-product-price">Price ($)</label>
+                    <input type="number" step="0.01" id="form-product-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="form-product-stock">Stock Level</label>
+                    <input type="number" id="form-product-stock" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="btn-close-modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="mockData.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
