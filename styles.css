@@ -1,0 +1,208 @@
+:root {
+    --bg-primary: #f8fafc;
+    --sidebar-bg: #0f172a;
+    --card-bg: #ffffff;
+    --text-main: #334155;
+    --accent: #6366f1;
+    --accent-hover: #4f46e5;
+    --border-color: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+}
+
+/* Base View Toggling */
+.hidden {
+    display: none !important;
+}
+
+/* Grid Layout Wrapper */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar Layout styling */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    color: white;
+    padding: 2rem;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar nav a.active {
+    background-color: var(--accent);
+    font-weight: 600;
+}
+
+/* Core Dashboard Layout Main Window */
+.main-content {
+    padding: 2.5rem;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+#timeframe-filter {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-weight: 500;
+}
+
+/* Top Level KPI Architecture */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
+    border: 1px solid #f1f5f9;
+}
+
+.card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+}
+
+.card p {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Graph Panel Structure */
+.chart-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Structured Data Containers */
+.table-container {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.data-table th, .data-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Functional Execution Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary { background: #e2e8f0; color: #334155; }
+.btn-secondary:hover { background: #cbd5e1; }
+.btn-danger { background: #ef4444; color: white; }
+.btn-danger:hover { background: #dc2626; }
+.btn-sm { padding: 0.25rem 0.6rem; font-size: 0.8rem; }
+
+/* Interactive Badges */
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.badge-success { background: #dcfce7; color: #15803d; }
+.badge-warning { background: #fef9c3; color: #a16207; }
+.badge-danger { background: #fee2e2; color: #b91c1c; }
+
+/* Interactive Modals Overlay */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+}
+.modal-content {
+    background: white; padding: 2rem; border-radius: 12px; width: 400px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.modal-content h2 { margin-top: 0; margin-bottom: 1.5rem; color: #0f172a; }
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+.form-group input { width: 100%; padding: 0.55rem; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 2rem; }
